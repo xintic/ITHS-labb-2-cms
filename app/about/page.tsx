@@ -9,7 +9,7 @@ import { getContentfulImageUrl } from '@/lib/contentful/image';
 export const revalidate = 60;
 
 export async function generateMetadata(): Promise<Metadata> {
-  const page = await getPageBySlug('home');
+  const page = await getPageBySlug('about');
   if (!page) {
     return {};
   }
@@ -20,8 +20,8 @@ export async function generateMetadata(): Promise<Metadata> {
   };
 }
 
-export default async function Home() {
-  const page = await getPageBySlug('home');
+export default async function AboutPage() {
+  const page = await getPageBySlug('about');
 
   if (!page) {
     notFound();
@@ -42,7 +42,6 @@ export default async function Home() {
             width={page.heroImage.width}
             height={page.heroImage.height}
             className="h-80 w-full rounded-3xl object-cover"
-            priority
           />
         ) : null}
       </header>
