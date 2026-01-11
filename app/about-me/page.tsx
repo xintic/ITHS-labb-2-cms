@@ -9,7 +9,7 @@ import { getContentfulImageUrl } from '@/lib/contentful/image';
 export const revalidate = 60;
 
 export async function generateMetadata(): Promise<Metadata> {
-  const page = await getPageBySlug('about');
+  const page = await getPageBySlug('about-me');
   if (!page) {
     return {};
   }
@@ -21,7 +21,7 @@ export async function generateMetadata(): Promise<Metadata> {
 }
 
 export default async function AboutPage() {
-  const page = await getPageBySlug('about');
+  const page = await getPageBySlug('about-me');
 
   if (!page) {
     notFound();

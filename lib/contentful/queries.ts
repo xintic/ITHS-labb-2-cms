@@ -91,18 +91,25 @@ export const PAGE_BY_SLUG_QUERY = `
 
 export const PROJECT_LIST_QUERY = `
   query ProjectList {
-    projectCollection {
+    projectCollection(order: order_DESC) {
       items {
         sys { id }
         title
         slug
         excerpt
         featured
+        order
         coverImage {
           url
           width
           height
           description
+        }
+        techCollection(limit: 6) {
+          items {
+            sys { id }
+            name
+          }
         }
       }
     }

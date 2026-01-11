@@ -48,6 +48,7 @@ export type Project = {
   projectUrl?: string | null;
   githubUrl?: string | null;
   featured?: boolean | null;
+  order?: number | null;
   coverImage?: ContentfulAsset | null;
   techCollection?: {
     items: TechItem[];

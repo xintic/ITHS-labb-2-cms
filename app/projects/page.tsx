@@ -48,6 +48,18 @@ export default async function ProjectsPage() {
                   {project.excerpt}
                 </p>
               ) : null}
+              {project.techCollection?.items?.length ? (
+                <div className="mt-4 flex flex-wrap gap-2">
+                  {project.techCollection.items.map((tech) => (
+                    <span
+                      key={tech.sys.id}
+                      className="rounded-full border border-border px-3 py-1 text-xs text-muted-foreground"
+                    >
+                      {tech.name}
+                    </span>
+                  ))}
+                </div>
+              ) : null}
             </Link>
           );
         })}
