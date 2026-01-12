@@ -5,6 +5,7 @@ import { RichText } from '@/components/RichText';
 import { SectionRenderer } from '@/components/sections/SectionRenderer';
 import { getPageBySlug } from '@/lib/contentful/api';
 import { getContentfulImageUrl } from '@/lib/contentful/image';
+import { LuDownload } from 'react-icons/lu';
 
 export const revalidate = 60;
 
@@ -56,7 +57,9 @@ export default async function AboutPage() {
       )}
       {downloads.length ? (
         <section className="space-y-4">
-          <h2 className="text-2xl font-semibold tracking-tight">Download resume</h2>
+          <h2 className="text-2xl font-semibold tracking-tight">
+            Download resume
+          </h2>
           <div className="flex flex-wrap gap-3">
             {downloads.map((item) => {
               const url = getContentfulImageUrl(item);
@@ -65,15 +68,15 @@ export default async function AboutPage() {
               }
               const label = item.description ?? item.fileName ?? 'Download';
               return (
-                <a
+                <button
                   key={url}
-                  href={url}
                   className="inline-flex items-center rounded-full border border-border px-4 py-2 text-sm font-medium text-foreground hover:bg-muted"
-                  target="_blank"
-                  rel="noreferrer"
                 >
-                  {label}
-                </a>
+                  <LuDownload className="mr-1" />
+                  <a href={url} target="_blank" rel="noreferrer">
+                    {label}
+                  </a>
+                </button>
               );
             })}
           </div>

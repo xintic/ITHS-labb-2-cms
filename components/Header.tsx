@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import { getNavigationItems } from '@/lib/contentful/api';
+import { FaTerminal } from 'react-icons/fa';
 
 function resolveSlug(slug: string) {
   return slug === 'home' ? '/' : `/${slug}`;
@@ -11,9 +12,15 @@ export async function Header() {
   return (
     <header className="border-b border-border bg-background">
       <div className="mx-auto flex w-full max-w-5xl items-center justify-between px-6 py-4">
-        <Link href="/" className="text-lg font-semibold tracking-tight">
-          Oskar Sjöbeck Berglund
-        </Link>
+        <div>
+          <Link
+            href="/"
+            className="text-lg font-semibold tracking-tight flex items-center"
+          >
+            <FaTerminal size={20} className="mr-1" />
+            Oskar Sjöbeck Berglund
+          </Link>
+        </div>
         <nav className="flex items-center gap-6 text-sm font-medium">
           {items.map((item) => {
             const slug = item.page?.slug ?? '';

@@ -17,7 +17,9 @@ export async function generateStaticParams() {
   return slugs.map((slug) => ({ slug }));
 }
 
-export async function generateMetadata({ params }: ProjectPageProps): Promise<Metadata> {
+export async function generateMetadata({
+  params
+}: ProjectPageProps): Promise<Metadata> {
   const { slug } = await params;
   const project = await getProjectBySlug(slug);
 
@@ -53,6 +55,30 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
             {project.title}
           </h1>
         </div>
+        {techItems.length ? (
+          <section className="space-y-4">
+            <h2 className="text-2xl font-semibold tracking-tight">Tech used</h2>
+            <div className="flex flex-wrap gap-2">
+              {techItems.map((tech) => (
+                <span
+                  key={tech.sys.id}
+                  className="inline-flex items-center gap-2 rounded-full border border-border px-3 py-1 text-xs text-muted-foreground"
+                >
+                  {tech.icon?.url && tech.icon.width && tech.icon.height ? (
+                    <Image
+                      src={getContentfulImageUrl(tech.icon) ?? tech.icon.url}
+                      alt={tech.icon.description ?? tech.name}
+                      width={16}
+                      height={16}
+                      className="h-4 w-4"
+                    />
+                  ) : null}
+                  {tech.name}
+                </span>
+              ))}
+            </div>
+          </section>
+        ) : null}
         {project.excerpt ? (
           <p className="text-lg text-muted-foreground">{project.excerpt}</p>
         ) : null}
@@ -83,21 +109,6 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
         />
       ) : null}
       <RichText document={project.description?.json} />
-      {techItems.length ? (
-        <section className="space-y-4">
-          <h2 className="text-2xl font-semibold tracking-tight">Tech used</h2>
-          <div className="flex flex-wrap gap-2">
-            {techItems.map((tech) => (
-              <span
-                key={tech.sys.id}
-                className="rounded-full border border-border px-3 py-1 text-xs text-muted-foreground"
-              >
-                {tech.name}
-              </span>
-            ))}
-          </div>
-        </section>
-      ) : null}
     </article>
   );
 }

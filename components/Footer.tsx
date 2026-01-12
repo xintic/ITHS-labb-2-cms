@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import { getSiteSettings } from '@/lib/contentful/api';
+import { BsGithub, BsLinkedin, BsEnvelope } from 'react-icons/bs';
 
 export async function Footer() {
   const settings = await getSiteSettings();
@@ -15,18 +16,27 @@ export async function Footer() {
           {settings?.email ? (
             <a
               href={`mailto:${settings.email}`}
-              className="hover:text-foreground"
+              className="hover:text-foreground flex items-center"
             >
-              {settings.email}
+              <BsEnvelope size={18} className="mr-1" />
+              E-Mail
             </a>
           ) : null}
           {settings?.githubUrl ? (
-            <Link href={settings.githubUrl} className="hover:text-foreground">
+            <Link
+              href={settings.githubUrl}
+              className="hover:text-foreground flex items-center"
+            >
+              <BsGithub size={18} className="mr-1" />
               GitHub
             </Link>
           ) : null}
           {settings?.linkedinUrl ? (
-            <Link href={settings.linkedinUrl} className="hover:text-foreground">
+            <Link
+              href={settings.linkedinUrl}
+              className="hover:text-foreground flex items-center"
+            >
+              <BsLinkedin size={18} className="mr-1" />
               LinkedIn
             </Link>
           ) : null}
