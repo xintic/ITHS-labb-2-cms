@@ -1,10 +1,7 @@
 import Link from 'next/link';
-import { getNavigationItems } from '@/lib/contentful/api';
 import { FaTerminal } from 'react-icons/fa';
-
-function resolveSlug(slug: string) {
-  return slug === 'home' ? '/' : `/${slug}`;
-}
+import { getNavigationItems } from '@/lib/contentful/api';
+import { NavMenu } from '@/components/NavMenu';
 
 export async function Header() {
   const items = await getNavigationItems();
@@ -21,17 +18,7 @@ export async function Header() {
             Oskar Sjöbeck Berglund
           </Link>
         </div>
-        <nav className="flex items-center gap-6 text-sm font-medium">
-          {items.map((item) => {
-            const slug = item.page?.slug ?? '';
-            const href = slug ? resolveSlug(slug) : '/';
-            return (
-              <Link key={item.sys.id} href={href}>
-                {item.label}
-              </Link>
-            );
-          })}
-        </nav>
+        <NavMenu items={items} />
       </div>
     </header>
   );
