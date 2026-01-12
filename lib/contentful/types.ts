@@ -9,6 +9,8 @@ export type ContentfulAsset = {
   width?: number | null;
   height?: number | null;
   description?: string | null;
+  fileName?: string | null;
+  contentType?: string | null;
 };
 
 export type NavigationItem = {
@@ -74,6 +76,9 @@ export type Page = {
   heroTitle?: string | null;
   body?: { json: Document } | null;
   heroImage?: ContentfulAsset | null;
+  mediaCollection?: {
+    items: ContentfulAsset[];
+  } | null;
   seoTitle?: string | null;
   seoDescription?: string | null;
   sectionsCollection?: {

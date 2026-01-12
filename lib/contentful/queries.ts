@@ -53,6 +53,16 @@ export const PAGE_BY_SLUG_QUERY = `
         }
         seoTitle
         seoDescription
+        mediaCollection {
+          items {
+            url
+            description
+            fileName
+            contentType
+            width
+            height
+          }
+        }
         sectionsCollection {
           items {
             __typename

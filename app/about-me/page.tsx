@@ -28,6 +28,10 @@ export default async function AboutPage() {
   }
 
   const heroImageUrl = getContentfulImageUrl(page.heroImage);
+  const mediaItems = page.mediaCollection?.items ?? [];
+  const downloads = mediaItems.filter(
+    (item) => item.contentType === 'application/pdf'
+  );
 
   return (
     <div className="space-y-12">
@@ -50,6 +54,31 @@ export default async function AboutPage() {
       ) : (
         <RichText document={page.body?.json} />
       )}
+      {downloads.length ? (
+        <section className="space-y-4">
+          <h2 className="text-2xl font-semibold tracking-tight">Download resume</h2>
+          <div className="flex flex-wrap gap-3">
+            {downloads.map((item) => {
+              const url = getContentfulImageUrl(item);
+              if (!url) {
+                return null;
+              }
+              const label = item.description ?? item.fileName ?? 'Download';
+              return (
+                <a
+                  key={url}
+                  href={url}
+                  className="inline-flex items-center rounded-full border border-border px-4 py-2 text-sm font-medium text-foreground hover:bg-muted"
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  {label}
+                </a>
+              );
+            })}
+          </div>
+        </section>
+      ) : null}
     </div>
   );
 }

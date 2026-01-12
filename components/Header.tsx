@@ -12,7 +12,7 @@ export async function Header() {
     <header className="border-b border-border bg-background">
       <div className="mx-auto flex w-full max-w-5xl items-center justify-between px-6 py-4">
         <Link href="/" className="text-lg font-semibold tracking-tight">
-          Oskar
+          Oskar Sjöbeck Berglund
         </Link>
         <nav className="flex items-center gap-6 text-sm font-medium">
           {items.map((item) => {
