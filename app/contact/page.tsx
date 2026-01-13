@@ -38,6 +38,9 @@ export default async function ContactPage() {
         <h1 className="text-4xl font-semibold tracking-tight">
           {page.heroTitle ?? page.title}
         </h1>
+        {page?.heroText ? (
+          <p className="text-lg text-muted-foreground">{page.heroText}</p>
+        ) : null}
         {heroImageUrl && page.heroImage?.width && page.heroImage?.height ? (
           <Image
             src={heroImageUrl}

@@ -24,12 +24,11 @@ export default async function ProjectsPage() {
         <h1 className="text-4xl font-semibold tracking-tight">
           {page?.heroTitle ?? page.title}
         </h1>
-        {page?.body?.json ? (
-          <div className="text-lg text-muted-foreground">
-            <RichText document={page.body.json} />
-          </div>
+        {page?.heroText ? (
+          <p className="text-lg text-muted-foreground">{page.heroText}</p>
         ) : null}
       </header>
+      <RichText document={page.body?.json} />
       <div className="grid gap-6 sm:grid-cols-2">
         {projects.map((project) => {
           const imageUrl = getContentfulImageUrl(project.coverImage);

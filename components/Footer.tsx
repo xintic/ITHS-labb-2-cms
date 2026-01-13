@@ -10,7 +10,7 @@ export async function Footer() {
 
   return (
     <footer className="border-t border-border bg-background">
-      <div className="mx-auto flex w-full max-w-5xl flex-col gap-4 px-6 py-8 text-sm text-muted-foreground sm:flex-row sm:items-center sm:justify-between">
+      <div className="mx-auto flex w-full max-w-5xl flex-row gap-4 px-6 py-8 text-sm text-muted-foreground sm:items-center sm:justify-between">
         <p>{footerText}</p>
         <div className="flex flex-wrap items-center gap-4">
           {settings?.email ? (
@@ -18,8 +18,7 @@ export async function Footer() {
               href={`mailto:${settings.email}`}
               className="hover:text-foreground flex items-center"
             >
-              <BsEnvelope size={18} className="mr-1" />
-              E-Mail
+              <BsEnvelope size={18} />
             </a>
           ) : null}
           {settings?.githubUrl ? (
@@ -27,8 +26,7 @@ export async function Footer() {
               href={settings.githubUrl}
               className="hover:text-foreground flex items-center"
             >
-              <BsGithub size={18} className="mr-1" />
-              GitHub
+              <BsGithub size={18} />
             </Link>
           ) : null}
           {settings?.linkedinUrl ? (
@@ -36,8 +34,7 @@ export async function Footer() {
               href={settings.linkedinUrl}
               className="hover:text-foreground flex items-center"
             >
-              <BsLinkedin size={18} className="mr-1" />
-              LinkedIn
+              <BsLinkedin size={18} />
             </Link>
           ) : null}
         </div>
