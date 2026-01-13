@@ -1,7 +1,8 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import type { Metadata } from 'next';
-import { getProjectList } from '@/lib/contentful/api';
+import { RichText } from '@/components/RichText';
+import { getPageBySlug, getProjectList } from '@/lib/contentful/api';
 import { getContentfulImageUrl } from '@/lib/contentful/image';
 
 export const revalidate = 60;
@@ -12,15 +13,22 @@ export const metadata: Metadata = {
 };
 
 export default async function ProjectsPage() {
-  const projects = await getProjectList();
+  const [projects, page] = await Promise.all([
+    getProjectList(),
+    getPageBySlug('projects')
+  ]);
 
   return (
     <div className="space-y-10">
       <header className="space-y-3">
-        <h1 className="text-4xl font-semibold tracking-tight">Projects</h1>
-        <p className="text-lg text-muted-foreground">
-          A selection of recent work and experiments.
-        </p>
+        <h1 className="text-4xl font-semibold tracking-tight">
+          {page?.heroTitle ?? page.title}
+        </h1>
+        {page?.body?.json ? (
+          <div className="text-lg text-muted-foreground">
+            <RichText document={page.body.json} />
+          </div>
+        ) : null}
       </header>
       <div className="grid gap-6 sm:grid-cols-2">
         {projects.map((project) => {
@@ -31,7 +39,9 @@ export default async function ProjectsPage() {
               href={`/projects/${project.slug}`}
               className="group rounded-2xl border border-border bg-card p-4 transition hover:-translate-y-1"
             >
-              {imageUrl && project.coverImage?.width && project.coverImage?.height ? (
+              {imageUrl &&
+              project.coverImage?.width &&
+              project.coverImage?.height ? (
                 <div className="relative mb-4 overflow-hidden rounded-xl">
                   <Image
                     src={imageUrl}

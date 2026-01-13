@@ -2,8 +2,7 @@ import Image from 'next/image';
 import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import { RichText } from '@/components/RichText';
-import { SectionRenderer } from '@/components/sections/SectionRenderer';
-import { getPageBySlug } from '@/lib/contentful/api';
+import { getPageBySlug, getSiteSettings } from '@/lib/contentful/api';
 import { getContentfulImageUrl } from '@/lib/contentful/image';
 
 export const revalidate = 60;
@@ -21,17 +20,33 @@ export async function generateMetadata(): Promise<Metadata> {
 }
 
 export default async function Home() {
-  const page = await getPageBySlug('home');
+  const [page, settings] = await Promise.all([
+    getPageBySlug('home'),
+    getSiteSettings()
+  ]);
 
   if (!page) {
     notFound();
   }
 
   const heroImageUrl = getContentfulImageUrl(page.heroImage);
+  const profileImageUrl = getContentfulImageUrl(settings?.profileImage ?? null);
 
   return (
     <div className="space-y-12">
       <header className="space-y-6">
+        {profileImageUrl &&
+        settings?.profileImage?.width &&
+        settings.profileImage.height ? (
+          <Image
+            src={profileImageUrl}
+            alt={settings.profileImage.description ?? ''}
+            width={settings.profileImage.width}
+            height={settings.profileImage.height}
+            className="h-80 w-80 rounded-full object-cover object-[center_30%]"
+            priority
+          />
+        ) : null}
         <h1 className="text-4xl font-semibold tracking-tight">
           {page.heroTitle ?? page.title}
         </h1>
@@ -46,11 +61,7 @@ export default async function Home() {
           />
         ) : null}
       </header>
-      {page.sectionsCollection?.items?.length ? (
-        <SectionRenderer sections={page.sectionsCollection.items} />
-      ) : (
-        <RichText document={page.body?.json} />
-      )}
+      <RichText document={page.body?.json} />
     </div>
   );
 }

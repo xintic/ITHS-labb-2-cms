@@ -57,23 +57,12 @@ export type Project = {
   } | null;
 };
 
-export type Section = {
-  __typename: 'Section';
-  sys: ContentfulSys;
-  type?: string | null;
-  headline?: string | null;
-  body?: { json: Document } | null;
-  image?: ContentfulAsset | null;
-  linkedProjects?: Project | null;
-};
-
-export type PageSection = Section;
-
 export type Page = {
   sys: ContentfulSys;
   title: string;
   slug: string;
   heroTitle?: string | null;
+  heroText?: string | null;
   body?: { json: Document } | null;
   heroImage?: ContentfulAsset | null;
   mediaCollection?: {
@@ -81,7 +70,4 @@ export type Page = {
   } | null;
   seoTitle?: string | null;
   seoDescription?: string | null;
-  sectionsCollection?: {
-    items: PageSection[];
-  } | null;
 };

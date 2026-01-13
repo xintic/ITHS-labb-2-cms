@@ -1,10 +1,14 @@
 import Link from 'next/link';
 import { FaTerminal } from 'react-icons/fa';
-import { getNavigationItems } from '@/lib/contentful/api';
+import { getNavigationItems, getSiteSettings } from '@/lib/contentful/api';
 import { NavMenu } from '@/components/NavMenu';
 
 export async function Header() {
-  const items = await getNavigationItems();
+  const [items, settings] = await Promise.all([
+    getNavigationItems(),
+    getSiteSettings()
+  ]);
+  const siteName = settings?.siteName ?? 'Portfolio';
 
   return (
     <header className="border-b border-border bg-background">
@@ -15,7 +19,7 @@ export async function Header() {
             className="text-lg font-semibold tracking-tight flex items-center"
           >
             <FaTerminal size={20} className="mr-1" />
-            Oskar Sjöbeck Berglund
+            {siteName}
           </Link>
         </div>
         <NavMenu items={items} />

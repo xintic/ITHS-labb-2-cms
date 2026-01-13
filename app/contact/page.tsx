@@ -3,7 +3,6 @@ import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import Link from 'next/link';
 import { RichText } from '@/components/RichText';
-import { SectionRenderer } from '@/components/sections/SectionRenderer';
 import { getPageBySlug, getSiteSettings } from '@/lib/contentful/api';
 import { getContentfulImageUrl } from '@/lib/contentful/image';
 
@@ -49,11 +48,7 @@ export default async function ContactPage() {
           />
         ) : null}
       </header>
-      {page.sectionsCollection?.items?.length ? (
-        <SectionRenderer sections={page.sectionsCollection.items} />
-      ) : (
-        <RichText document={page.body?.json} />
-      )}
+      <RichText document={page.body?.json} />
       <section className="rounded-2xl border border-border bg-card p-6">
         <h2 className="text-lg font-semibold">Contact details</h2>
         <div className="mt-4 flex flex-col gap-2 text-sm text-muted-foreground">

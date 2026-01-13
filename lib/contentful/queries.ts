@@ -42,6 +42,7 @@ export const PAGE_BY_SLUG_QUERY = `
         title
         slug
         heroTitle
+        heroText
         body {
           json
         }
@@ -61,37 +62,6 @@ export const PAGE_BY_SLUG_QUERY = `
             contentType
             width
             height
-          }
-        }
-        sectionsCollection {
-          items {
-            __typename
-            sys { id }
-            ... on Section {
-              type
-              headline
-              body {
-                json
-              }
-              image {
-                url
-                width
-                height
-                description
-              }
-              linkedProjects {
-                sys { id }
-                title
-                slug
-                excerpt
-                coverImage {
-                  url
-                  width
-                  height
-                  description
-                }
-              }
-            }
           }
         }
       }
