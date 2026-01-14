@@ -40,6 +40,17 @@ export type TechItem = {
   icon?: ContentfulAsset | null;
 };
 
+export type Experience = {
+  sys: ContentfulSys;
+  place: string;
+  category?: string | null;
+  start?: string | null;
+  end?: string | null;
+  role?: string | null;
+  type?: string | null;
+  description?: string | null;
+};
+
 export type Project = {
   sys: ContentfulSys;
   title: string;

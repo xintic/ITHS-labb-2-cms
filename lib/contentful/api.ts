@@ -6,9 +6,11 @@ import {
   PROJECT_LIST_QUERY,
   PROJECT_SLUGS_QUERY,
   SITE_SETTINGS_QUERY,
-  TECH_LIST_QUERY
+  TECH_LIST_QUERY,
+  EXPERIENCE_LIST_QUERY
 } from './queries';
 import type {
+  Experience,
   NavigationItem,
   Page,
   Project,
@@ -84,4 +86,13 @@ export async function getTechList(revalidate = 60) {
     { revalidate, tags: ['tech'] }
   );
   return data.techCollection.items;
+}
+
+export async function getExperienceList(revalidate = 60) {
+  const data = await fetchGraphQL<{ experienceCollection: CollectionResponse<Experience> }>(
+    EXPERIENCE_LIST_QUERY,
+    undefined,
+    { revalidate, tags: ['experience'] }
+  );
+  return data.experienceCollection.items;
 }

@@ -163,3 +163,20 @@ export const TECH_LIST_QUERY = `
     }
   }
 `;
+
+export const EXPERIENCE_LIST_QUERY = `
+  query ExperienceList {
+    experienceCollection(order: start_DESC) {
+      items {
+        sys { id }
+        place
+        category
+        start
+        end
+        role
+        type
+        description
+      }
+    }
+  }
+`;
