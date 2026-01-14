@@ -84,7 +84,7 @@ export const PROJECT_LIST_QUERY = `
           height
           description
         }
-        techCollection(limit: 6) {
+        techCollection(limit: 10) {
           items {
             sys { id }
             name

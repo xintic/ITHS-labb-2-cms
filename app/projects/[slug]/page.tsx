@@ -5,6 +5,7 @@ import { notFound } from 'next/navigation';
 import { RichText } from '@/components/RichText';
 import { getProjectBySlug, getProjectSlugs } from '@/lib/contentful/api';
 import { getContentfulImageUrl } from '@/lib/contentful/image';
+import { LuExternalLink, LuGithub } from 'react-icons/lu';
 
 export const revalidate = 60;
 
@@ -79,26 +80,29 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
             </div>
           </section>
         ) : null}
-        {project.excerpt ? (
-          <p className="text-lg text-muted-foreground">{project.excerpt}</p>
-        ) : null}
-        {project.projectUrl ? (
-          <Link
-            href={project.projectUrl}
-            className="inline-flex items-center text-sm font-medium text-foreground underline decoration-foreground/40 underline-offset-4"
-          >
-            Visit project
-          </Link>
-        ) : null}
-        {project.githubUrl ? (
-          <Link
-            href={project.githubUrl}
-            className="inline-flex items-center text-sm font-medium text-foreground underline decoration-foreground/40 underline-offset-4"
-          >
-            GitHub repo
-          </Link>
-        ) : null}
       </header>
+      {project.projectUrl || project.githubUrl ? (
+        <div className="flex flex-wrap justify-center gap-6">
+          {project.projectUrl ? (
+            <Link
+              href={project.projectUrl}
+              className="inline-flex items-center gap-2 text-lg font-medium text-foreground underline decoration-foreground/40 underline-offset-4"
+            >
+              <LuExternalLink size={20} />
+              Visit project
+            </Link>
+          ) : null}
+          {project.githubUrl ? (
+            <Link
+              href={project.githubUrl}
+              className="inline-flex items-center gap-2 text-lg font-medium text-foreground underline decoration-foreground/40 underline-offset-4"
+            >
+              <LuGithub size={20} />
+              GitHub repo
+            </Link>
+          ) : null}
+        </div>
+      ) : null}
       {imageUrl && project.coverImage?.width && project.coverImage?.height ? (
         <Image
           src={imageUrl}

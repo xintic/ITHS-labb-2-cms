@@ -3,8 +3,10 @@ import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import Link from 'next/link';
 import { RichText } from '@/components/RichText';
+import { ContactForm } from '@/components/ContactForm';
 import { getPageBySlug, getSiteSettings } from '@/lib/contentful/api';
 import { getContentfulImageUrl } from '@/lib/contentful/image';
+import { LuGithub, LuLinkedin, LuMail } from 'react-icons/lu';
 
 export const revalidate = 60;
 
@@ -34,7 +36,7 @@ export default async function ContactPage() {
 
   return (
     <div className="space-y-12">
-      <header className="space-y-6">
+      <header className="space-y-6 text-center">
         <h1 className="text-4xl font-semibold tracking-tight">
           {page.heroTitle ?? page.title}
         </h1>
@@ -52,24 +54,34 @@ export default async function ContactPage() {
         ) : null}
       </header>
       <RichText document={page.body?.json} />
-      <section className="rounded-2xl border border-border bg-card p-6">
-        <h2 className="text-lg font-semibold">Contact details</h2>
-        <div className="mt-4 flex flex-col gap-2 text-sm text-muted-foreground">
+      <ContactForm email={settings?.email ?? null} />
+      <section className="rounded-2xl bg-card p-6">
+        <h2 className="text-lg font-semibold text-center">Contact details</h2>
+        <div className="mt-4 flex flex-row justify-evenly gap-2 text-sm text-muted-foreground">
           {settings?.email ? (
             <a
               href={`mailto:${settings.email}`}
-              className="hover:text-foreground"
+              className="hover:text-foreground text-base flex items-center"
             >
-              {settings.email}
+              <LuMail className="mr-1" size={18} />
+              E-mail
             </a>
           ) : null}
           {settings?.githubUrl ? (
-            <Link href={settings.githubUrl} className="hover:text-foreground">
+            <Link
+              href={settings.githubUrl}
+              className="hover:text-foreground text-base flex items-center"
+            >
+              <LuGithub className="mr-1" size={18} />
               GitHub
             </Link>
           ) : null}
           {settings?.linkedinUrl ? (
-            <Link href={settings.linkedinUrl} className="hover:text-foreground">
+            <Link
+              href={settings.linkedinUrl}
+              className="hover:text-foreground text-base flex items-center"
+            >
+              <LuLinkedin className="mr-1" size={18} />
               LinkedIn
             </Link>
           ) : null}
