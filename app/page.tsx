@@ -4,7 +4,8 @@ import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import { RichText } from '@/components/RichText';
 import { Button } from '@/components/ui/button';
-import { getPageBySlug, getSiteSettings } from '@/lib/contentful/api';
+import { FeaturedProjectsCarousel } from '@/components/FeaturedProjectsCarousel';
+import { getPageBySlug, getProjectList, getSiteSettings } from '@/lib/contentful/api';
 import { getContentfulImageUrl } from '@/lib/contentful/image';
 
 export const revalidate = 60;
@@ -22,9 +23,10 @@ export async function generateMetadata(): Promise<Metadata> {
 }
 
 export default async function Home() {
-  const [page, settings] = await Promise.all([
+  const [page, settings, projects] = await Promise.all([
     getPageBySlug('home'),
-    getSiteSettings()
+    getSiteSettings(),
+    getProjectList()
   ]);
 
   if (!page) {
@@ -32,6 +34,7 @@ export default async function Home() {
   }
 
   const profileImageUrl = getContentfulImageUrl(settings?.profileImage ?? null);
+  const featuredProjects = projects.filter((project) => project.featured);
 
   return (
     <div className="space-y-12">
@@ -57,7 +60,7 @@ export default async function Home() {
           ) : null}
           <div className="flex flex-wrap gap-4">
             <Button size="lg" asChild>
-              <Link href="/projects">View Projects</Link>
+              <Link href="/about-me">About Me</Link>
             </Button>
             <Button size="lg" variant="outline" asChild>
               <Link href="/contact">Contact Me</Link>
@@ -65,6 +68,19 @@ export default async function Home() {
           </div>
         </div>
       </header>
+      {featuredProjects.length ? (
+        <section className="space-y-6">
+          <div className="flex items-center justify-between gap-4">
+            <h2 className="text-2xl font-semibold tracking-tight">
+              Featured Projects
+            </h2>
+            <Button variant="ghost" asChild>
+              <Link href="/projects">View all</Link>
+            </Button>
+          </div>
+          <FeaturedProjectsCarousel projects={featuredProjects} />
+        </section>
+      ) : null}
       <RichText document={page.body?.json} />
     </div>
   );

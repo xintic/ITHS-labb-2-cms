@@ -1,12 +1,11 @@
 import Link from 'next/link';
 import { getSiteSettings } from '@/lib/contentful/api';
-import { BsGithub, BsLinkedin, BsEnvelope } from 'react-icons/bs';
+import { LuGithub, LuLinkedin, LuMail } from 'react-icons/lu';
 
 export async function Footer() {
   const settings = await getSiteSettings();
   const siteName = settings?.siteName ?? 'Portfolio';
-  const footerText =
-    settings?.footerText ?? `© ${new Date().getFullYear()} ${siteName}`;
+  const footerText = `© ${new Date().getFullYear()} ${siteName}`;
 
   return (
     <footer className="border-t border-border bg-background">
@@ -18,7 +17,7 @@ export async function Footer() {
               href={`mailto:${settings.email}`}
               className="hover:text-foreground flex items-center"
             >
-              <BsEnvelope size={18} />
+              <LuMail size={20} />
             </a>
           ) : null}
           {settings?.githubUrl ? (
@@ -26,7 +25,7 @@ export async function Footer() {
               href={settings.githubUrl}
               className="hover:text-foreground flex items-center"
             >
-              <BsGithub size={18} />
+              <LuGithub size={20} />
             </Link>
           ) : null}
           {settings?.linkedinUrl ? (
@@ -34,7 +33,7 @@ export async function Footer() {
               href={settings.linkedinUrl}
               className="hover:text-foreground flex items-center"
             >
-              <BsLinkedin size={18} />
+              <LuLinkedin size={20} />
             </Link>
           ) : null}
         </div>

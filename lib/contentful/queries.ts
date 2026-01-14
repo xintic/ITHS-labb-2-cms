@@ -28,7 +28,6 @@ export const SITE_SETTINGS_QUERY = `
           height
           description
         }
-        footerText
       }
     }
   }

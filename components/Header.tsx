@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import { FaTerminal } from 'react-icons/fa';
+import { LuTerminal } from 'react-icons/lu';
 import { getNavigationItems, getSiteSettings } from '@/lib/contentful/api';
 import { NavMenu } from '@/components/NavMenu';
 
@@ -18,7 +18,7 @@ export async function Header() {
             href="/"
             className="text-lg font-semibold tracking-tight flex items-center"
           >
-            <FaTerminal size={20} className="mr-1" />
+            <LuTerminal size={24} className="mr-1" />
             {siteName}
           </Link>
         </div>

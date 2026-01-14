@@ -29,7 +29,6 @@ export type SiteSettings = {
   githubUrl?: string | null;
   linkedinUrl?: string | null;
   profileImage?: ContentfulAsset | null;
-  footerText?: string | null;
 };
 
 export type TechItem = {
