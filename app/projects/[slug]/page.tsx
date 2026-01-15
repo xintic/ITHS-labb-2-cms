@@ -86,6 +86,8 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
           {project.projectUrl ? (
             <Link
               href={project.projectUrl}
+              target="_blank"
+              rel="noreferrer"
               className="inline-flex items-center gap-2 text-lg font-medium text-foreground underline decoration-foreground/40 underline-offset-4"
             >
               <LuExternalLink size={20} />
@@ -95,6 +97,8 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
           {project.githubUrl ? (
             <Link
               href={project.githubUrl}
+              target="_blank"
+              rel="noreferrer"
               className="inline-flex items-center gap-2 text-lg font-medium text-foreground underline decoration-foreground/40 underline-offset-4"
             >
               <LuGithub size={20} />

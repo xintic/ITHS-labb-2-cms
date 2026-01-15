@@ -23,6 +23,8 @@ export async function Footer() {
           {settings?.githubUrl ? (
             <Link
               href={settings.githubUrl}
+              target="_blank"
+              rel="noreferrer"
               className="hover:text-foreground flex items-center"
             >
               <LuGithub size={20} />
@@ -31,6 +33,8 @@ export async function Footer() {
           {settings?.linkedinUrl ? (
             <Link
               href={settings.linkedinUrl}
+              target="_blank"
+              rel="noreferrer"
               className="hover:text-foreground flex items-center"
             >
               <LuLinkedin size={20} />
