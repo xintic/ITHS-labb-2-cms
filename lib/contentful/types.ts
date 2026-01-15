@@ -49,6 +49,7 @@ export type Experience = {
   role?: string | null;
   type?: string | null;
   description?: string | null;
+  order?: number | null;
 };
 
 export type Project = {

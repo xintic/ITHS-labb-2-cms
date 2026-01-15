@@ -5,7 +5,11 @@ import { notFound } from 'next/navigation';
 import { RichText } from '@/components/RichText';
 import { Button } from '@/components/ui/button';
 import { FeaturedProjectsCarousel } from '@/components/FeaturedProjectsCarousel';
-import { getPageBySlug, getProjectList, getSiteSettings } from '@/lib/contentful/api';
+import {
+  getPageBySlug,
+  getProjectList,
+  getSiteSettings
+} from '@/lib/contentful/api';
 import { getContentfulImageUrl } from '@/lib/contentful/image';
 
 export const revalidate = 60;
@@ -47,7 +51,7 @@ export default async function Home() {
             alt={settings.profileImage.description ?? ''}
             width={settings.profileImage.width}
             height={settings.profileImage.height}
-            className="h-48 w-48 flex-none rounded-full object-cover object-[center_30%] sm:h-64 sm:w-64 lg:h-80 lg:w-80"
+            className="h-48 w-48 flex-none rounded-full object-cover object-[center_5%] sm:h-64 sm:w-64 lg:h-80 lg:w-80"
             priority
           />
         ) : null}

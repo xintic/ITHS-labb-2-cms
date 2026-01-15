@@ -166,7 +166,7 @@ export const TECH_LIST_QUERY = `
 
 export const EXPERIENCE_LIST_QUERY = `
   query ExperienceList {
-    experienceCollection(order: start_DESC) {
+    experienceCollection(order: order_DESC) {
       items {
         sys { id }
         place
@@ -176,6 +176,7 @@ export const EXPERIENCE_LIST_QUERY = `
         role
         type
         description
+        order
       }
     }
   }
