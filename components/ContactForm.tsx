@@ -12,14 +12,48 @@ type ContactFormProps = {
 };
 
 export function ContactForm({ email }: ContactFormProps) {
-  const action = email ? `mailto:${email}` : undefined;
+  const [status, setStatus] = React.useState<
+    'idle' | 'loading' | 'success' | 'error'
+  >('idle');
+  const [message, setMessage] = React.useState<string | null>(null);
+
+  const onSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    setStatus('loading');
+    setMessage(null);
+
+    const form = event.currentTarget;
+    const formData = new FormData(form);
+    const payload = {
+      name: String(formData.get('name') ?? ''),
+      email: String(formData.get('email') ?? ''),
+      message: String(formData.get('message') ?? '')
+    };
+
+    try {
+      const response = await fetch('/api/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(payload)
+      });
+
+      if (!response.ok) {
+        throw new Error('Request failed');
+      }
+
+      form.reset();
+      setStatus('success');
+      setMessage('Thanks! Your message has been sent.');
+    } catch (error) {
+      setStatus('error');
+      setMessage('Something went wrong. Please try again.');
+    }
+  };
 
   return (
     <form
       className="mx-auto w-full max-w-2xl space-y-4 rounded-2xl border border-border bg-card p-6"
-      action={action}
-      method="post"
-      encType="text/plain"
+      onSubmit={onSubmit}
     >
       <div className="grid gap-4 md:grid-cols-2">
         <div className="space-y-3">
@@ -54,9 +88,18 @@ export function ContactForm({ email }: ContactFormProps) {
           required
         />
       </div>
-      <div className="flex flex-wrap items-center justify-between gap-4 text-sm text-muted-foreground">
-        <Button type="submit" disabled={!email} className="w-full" size="lg">
-          Send message
+      <div className="space-y-2 text-sm text-muted-foreground">
+        {message ? <p>{message}</p> : null}
+        {!message && !email ? (
+          <p>Email is not configured yet.</p>
+        ) : null}
+        <Button
+          type="submit"
+          disabled={!email || status === 'loading'}
+          className="w-full"
+          size="lg"
+        >
+          {status === 'loading' ? 'Sending…' : 'Send message'}
         </Button>
       </div>
     </form>
