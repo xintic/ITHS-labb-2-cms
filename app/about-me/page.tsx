@@ -147,10 +147,9 @@ export default async function AboutPage() {
                 Technologies
               </h2>
               {(['frontend', 'backend', 'tools'] as const).map((category) => {
-                const group = techItems.filter(
-                  (tech) =>
-                    tech.category?.toLowerCase() === category
-                );
+                const group = techItems
+                  .filter((tech) => tech.category?.toLowerCase() === category)
+                  .sort((a, b) => (b.order ?? 0) - (a.order ?? 0));
                 if (!group.length) {
                   return null;
                 }

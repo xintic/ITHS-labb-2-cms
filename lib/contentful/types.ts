@@ -38,6 +38,7 @@ export type TechItem = {
   slug?: string | null;
   url?: string | null;
   icon?: ContentfulAsset | null;
+  order?: number | null;
 };
 
 export type Experience = {

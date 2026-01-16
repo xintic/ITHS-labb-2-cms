@@ -146,13 +146,14 @@ export const PROJECT_SLUGS_QUERY = `
 
 export const TECH_LIST_QUERY = `
   query TechList {
-    techCollection {
+    techCollection(order: order_DESC) {
       items {
         sys { id }
         name
         category
         slug
         url
+        order
         icon {
           url
           width
