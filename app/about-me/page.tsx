@@ -70,7 +70,6 @@ export default async function AboutPage() {
             width={page.heroImage.width}
             height={page.heroImage.height}
             className="h-110 w-full flex-none rounded-3xl object-cover md:w-96"
-            loading="lazy"
           />
         ) : null}
       </section>
