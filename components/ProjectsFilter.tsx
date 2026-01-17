@@ -34,7 +34,9 @@ export function ProjectsFilter({ projects }: ProjectsFilterProps) {
     }
     return projects.filter((project) => {
       const projectTechs = project.techCollection?.items ?? [];
-      return projectTechs.some((tech) => selectedTechs.includes(tech.name));
+      return selectedTechs.every((selected) =>
+        projectTechs.some((tech) => tech.name === selected)
+      );
     });
   }, [projects, selectedTechs]);
 

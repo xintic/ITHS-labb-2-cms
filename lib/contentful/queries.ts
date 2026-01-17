@@ -108,6 +108,7 @@ export const PROJECT_BY_SLUG_QUERY = `
         }
         projectUrl
         githubUrl
+        youtubeUrl
         featured
         coverImage {
           url

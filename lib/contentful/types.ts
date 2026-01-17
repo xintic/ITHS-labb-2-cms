@@ -61,6 +61,7 @@ export type Project = {
   description?: { json: Document } | null;
   projectUrl?: string | null;
   githubUrl?: string | null;
+  youtubeUrl?: string | null;
   featured?: boolean | null;
   order?: number | null;
   coverImage?: ContentfulAsset | null;

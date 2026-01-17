@@ -5,7 +5,7 @@ import { notFound } from 'next/navigation';
 import { RichText } from '@/components/RichText';
 import { getProjectBySlug, getProjectSlugs } from '@/lib/contentful/api';
 import { getContentfulImageUrl } from '@/lib/contentful/image';
-import { LuExternalLink, LuGithub } from 'react-icons/lu';
+import { LuExternalLink, LuGithub, LuYoutube } from 'react-icons/lu';
 
 export const revalidate = 60;
 
@@ -102,7 +102,18 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
               className="inline-flex items-center gap-2 text-lg font-medium text-foreground underline decoration-foreground/40 underline-offset-4"
             >
               <LuGithub size={20} />
-              GitHub repo
+              GitHub
+            </Link>
+          ) : null}
+          {project.youtubeUrl ? (
+            <Link
+              href={project.youtubeUrl}
+              target="_blank"
+              rel="noreferrer"
+              className="inline-flex items-center gap-2 text-lg font-medium text-foreground underline decoration-foreground/40 underline-offset-4"
+            >
+              <LuYoutube size={20} />
+              YouTube
             </Link>
           ) : null}
         </div>
