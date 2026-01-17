@@ -2,7 +2,11 @@ import Image from 'next/image';
 import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import { RichText } from '@/components/RichText';
-import { getExperienceList, getPageBySlug, getTechList } from '@/lib/contentful/api';
+import {
+  getExperienceList,
+  getPageBySlug,
+  getTechList
+} from '@/lib/contentful/api';
 import { getContentfulImageUrl } from '@/lib/contentful/image';
 import { LuDownload } from 'react-icons/lu';
 
@@ -15,7 +19,7 @@ export async function generateMetadata(): Promise<Metadata> {
   }
 
   return {
-    title: page.seoTitle ?? page.title,
+    title: page.title ?? undefined,
     description: page.seoDescription ?? undefined
   };
 }
@@ -66,10 +70,13 @@ export default async function AboutPage() {
             width={page.heroImage.width}
             height={page.heroImage.height}
             className="h-110 w-full flex-none rounded-3xl object-cover md:w-96"
+            loading="lazy"
           />
         ) : null}
       </section>
-      {educationExperiences.length || workExperiences.length || techItems.length ? (
+      {educationExperiences.length ||
+      workExperiences.length ||
+      techItems.length ? (
         <section className="grid gap-10 lg:grid-cols-[minmax(0,1fr)_240px]">
           <div className="space-y-10">
             {educationExperiences.length ? (
@@ -157,8 +164,8 @@ export default async function AboutPage() {
                   category === 'frontend'
                     ? 'Frontend'
                     : category === 'backend'
-                    ? 'Backend'
-                    : 'Tools';
+                      ? 'Backend'
+                      : 'Tools';
                 return (
                   <div key={category} className="space-y-3">
                     <h3 className="text-sm font-semibold uppercase tracking-wide text-muted-foreground">
@@ -174,7 +181,10 @@ export default async function AboutPage() {
                           tech.icon.width &&
                           tech.icon.height ? (
                             <Image
-                              src={getContentfulImageUrl(tech.icon) ?? tech.icon.url}
+                              src={
+                                getContentfulImageUrl(tech.icon) ??
+                                tech.icon.url
+                              }
                               alt={tech.icon.description ?? tech.name}
                               width={16}
                               height={16}

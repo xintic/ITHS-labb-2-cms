@@ -17,7 +17,7 @@ export async function generateMetadata(): Promise<Metadata> {
   }
 
   return {
-    title: page.seoTitle ?? page.title,
+    title: page.title ?? undefined,
     description: page.seoDescription ?? undefined
   };
 }

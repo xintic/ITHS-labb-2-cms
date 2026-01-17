@@ -16,6 +16,7 @@ export async function Footer() {
             <a
               href={`mailto:${settings.email}`}
               className="hover:text-foreground flex items-center"
+              aria-label="E-Mail"
             >
               <LuMail size={20} />
             </a>
@@ -26,6 +27,7 @@ export async function Footer() {
               target="_blank"
               rel="noreferrer"
               className="hover:text-foreground flex items-center"
+              aria-label="GitHub"
             >
               <LuGithub size={20} />
             </Link>
@@ -36,6 +38,7 @@ export async function Footer() {
               target="_blank"
               rel="noreferrer"
               className="hover:text-foreground flex items-center"
+              aria-label="LinkedIn"
             >
               <LuLinkedin size={20} />
             </Link>

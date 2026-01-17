@@ -5,10 +5,17 @@ import { getPageBySlug, getProjectList } from '@/lib/contentful/api';
 
 export const revalidate = 60;
 
-export const metadata: Metadata = {
-  title: 'Projects',
-  description: 'Selected projects from the portfolio.'
-};
+export async function generateMetadata(): Promise<Metadata> {
+  const page = await getPageBySlug('projects');
+  if (!page) {
+    return {};
+  }
+
+  return {
+    title: page.title ?? undefined,
+    description: page.seoDescription ?? undefined
+  };
+}
 
 export default async function ProjectsPage() {
   const [projects, page] = await Promise.all([
