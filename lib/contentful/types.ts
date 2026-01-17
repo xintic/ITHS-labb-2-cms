@@ -81,6 +81,5 @@ export type Page = {
   mediaCollection?: {
     items: ContentfulAsset[];
   } | null;
-  seoTitle?: string | null;
   seoDescription?: string | null;
 };

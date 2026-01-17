@@ -51,7 +51,6 @@ export const PAGE_BY_SLUG_QUERY = `
           height
           description
         }
-        seoTitle
         seoDescription
         mediaCollection {
           items {
