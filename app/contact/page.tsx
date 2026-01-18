@@ -8,7 +8,7 @@ import { getPageBySlug, getSiteSettings } from '@/lib/contentful/api';
 import { getContentfulImageUrl } from '@/lib/contentful/image';
 import { LuGithub, LuLinkedin, LuMail } from 'react-icons/lu';
 
-export const revalidate = 60;
+export const revalidate = 300;
 
 export async function generateMetadata(): Promise<Metadata> {
   const page = await getPageBySlug('contact');

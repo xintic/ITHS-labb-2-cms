@@ -7,7 +7,7 @@ import { getProjectBySlug, getProjectSlugs } from '@/lib/contentful/api';
 import { getContentfulImageUrl } from '@/lib/contentful/image';
 import { LuExternalLink, LuGithub, LuYoutube } from 'react-icons/lu';
 
-export const revalidate = 60;
+export const revalidate = 300;
 
 type ProjectPageProps = {
   params: Promise<{ slug: string }>;

@@ -12,7 +12,7 @@ import {
 } from '@/lib/contentful/api';
 import { getContentfulImageUrl } from '@/lib/contentful/image';
 
-export const revalidate = 60;
+export const revalidate = 300;
 
 export async function generateMetadata(): Promise<Metadata> {
   const page = await getPageBySlug('home');
