@@ -69,7 +69,7 @@ export default async function AboutPage() {
             alt={page.heroImage.description ?? ''}
             width={page.heroImage.width}
             height={page.heroImage.height}
-            className="h-110 w-full flex-none rounded-3xl object-cover md:w-96"
+            className="h-90 w-full flex-none rounded-3xl object-cover object-[center_40%] md:w-96"
           />
         ) : null}
       </section>
