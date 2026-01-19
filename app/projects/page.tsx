@@ -3,7 +3,7 @@ import { ProjectsFilter } from '@/components/ProjectsFilter';
 import { RichText } from '@/components/RichText';
 import { getPageBySlug, getProjectList } from '@/lib/contentful/api';
 
-export const revalidate = 300;
+export const revalidate = false;
 
 export async function generateMetadata(): Promise<Metadata> {
   const page = await getPageBySlug('projects');

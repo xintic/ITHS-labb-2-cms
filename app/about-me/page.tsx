@@ -10,7 +10,7 @@ import {
 import { getContentfulImageUrl } from '@/lib/contentful/image';
 import { LuDownload } from 'react-icons/lu';
 
-export const revalidate = 300;
+export const revalidate = false;
 
 export async function generateMetadata(): Promise<Metadata> {
   const page = await getPageBySlug('about-me');
