@@ -19,15 +19,29 @@ export async function POST(req: NextRequest) {
   revalidatePath('/contact');
 
   revalidateTag('navigation');
-  revalidateTag('siteSettings');
+  revalidateTag('site-settings');
   revalidateTag('projects');
-  revalidateTag('pages');
+  revalidateTag('tech');
+  revalidateTag('experience');
 
   const slug =
     body?.fields?.slug?.['en-US'] ?? body?.fields?.slug?.['sv-SE'] ?? null;
+  const contentType = body?.sys?.contentType?.sys?.id ?? null;
 
   if (typeof slug === 'string' && slug.length > 0) {
-    revalidatePath(`/projects/${slug}`);
+    if (contentType === 'project') {
+      revalidateTag(`project:${slug}`);
+      revalidatePath(`/projects/${slug}`);
+    }
+
+    if (contentType === 'page') {
+      revalidateTag(`page:${slug}`);
+      if (slug === 'home') {
+        revalidatePath('/');
+      } else {
+        revalidatePath(`/${slug}`);
+      }
+    }
   }
 
   return NextResponse.json({
