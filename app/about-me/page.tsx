@@ -103,7 +103,7 @@ export default async function AboutPage() {
                         <p className="text-sm">{experience.type}</p>
                       ) : null}
                       {experience.description ? (
-                        <p className="text-sm text-muted-foreground">
+                        <p className="text-sm text-muted-foreground whitespace-pre-line">
                           {experience.description}
                         </p>
                       ) : null}
