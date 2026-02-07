@@ -56,13 +56,13 @@ export function FeaturedProjectsCarousel({
                     />
                   </div>
                 ) : null}
-                <h3 className="text-lg font-semibold">{project.title}</h3>
+                <h3 className="text-xl font-semibold">{project.title}</h3>
                 {project.techCollection?.items?.length ? (
                   <div className="mt-2 flex flex-wrap gap-2">
                     {project.techCollection.items.map((tech) => (
                       <span
                         key={tech.sys.id}
-                        className="rounded-full border border-border px-2 py-0.5 text-xs text-muted-foreground"
+                        className="rounded-full border border-border px-2 py-0.5 text-sm text-muted-foreground"
                       >
                         {tech.name}
                       </span>

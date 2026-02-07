@@ -42,7 +42,9 @@ export function ProjectsFilter({ projects }: ProjectsFilterProps) {
 
   const toggleTech = (name: string) => {
     setSelectedTechs((prev) =>
-      prev.includes(name) ? prev.filter((tech) => tech !== name) : [...prev, name]
+      prev.includes(name)
+        ? prev.filter((tech) => tech !== name)
+        : [...prev, name]
     );
   };
 
@@ -57,7 +59,7 @@ export function ProjectsFilter({ projects }: ProjectsFilterProps) {
           <button
             type="button"
             onClick={clearFilters}
-            className={`rounded-full border px-3 py-1 text-xs font-medium transition ${
+            className={`rounded-full border px-3 py-1 text-sm font-medium transition ${
               selectedTechs.length
                 ? 'border-border text-muted-foreground hover:bg-muted'
                 : 'border-foreground bg-foreground text-background'
@@ -72,7 +74,7 @@ export function ProjectsFilter({ projects }: ProjectsFilterProps) {
                 key={tech.id}
                 type="button"
                 onClick={() => toggleTech(tech.name)}
-                className={`rounded-full border px-3 py-1 text-xs font-medium transition ${
+                className={`rounded-full border px-3 py-1 text-sm font-medium transition ${
                   isSelected
                     ? 'border-foreground bg-foreground text-background'
                     : 'border-border text-muted-foreground hover:bg-muted'
@@ -93,7 +95,9 @@ export function ProjectsFilter({ projects }: ProjectsFilterProps) {
               href={`/projects/${project.slug}`}
               className="group rounded-2xl border border-border bg-card p-4 transition hover:-translate-y-1"
             >
-              {imageUrl && project.coverImage?.width && project.coverImage?.height ? (
+              {imageUrl &&
+              project.coverImage?.width &&
+              project.coverImage?.height ? (
                 <div className="relative mb-4 overflow-hidden rounded-xl">
                   <Image
                     src={imageUrl}
@@ -115,7 +119,7 @@ export function ProjectsFilter({ projects }: ProjectsFilterProps) {
                   {project.techCollection.items.map((tech) => (
                     <span
                       key={tech.sys.id}
-                      className="rounded-full border border-border px-3 py-1 text-xs text-muted-foreground"
+                      className="rounded-full border border-border px-3 py-1 text-sm text-muted-foreground"
                     >
                       {tech.name}
                     </span>

@@ -63,7 +63,7 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
               {techItems.map((tech) => (
                 <span
                   key={tech.sys.id}
-                  className="inline-flex items-center gap-2 rounded-full border border-border px-3 py-1 text-xs text-muted-foreground"
+                  className="inline-flex items-center gap-2 rounded-full border border-border px-3 py-1 text-sm text-muted-foreground"
                 >
                   {tech.icon?.url && tech.icon.width && tech.icon.height ? (
                     <Image
@@ -71,7 +71,7 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
                       alt={tech.icon.description ?? tech.name}
                       width={16}
                       height={16}
-                      className="h-4 w-4"
+                      className="h-4 w-4 dark:invert"
                     />
                   ) : null}
                   {tech.name}

@@ -55,7 +55,7 @@ export default async function ContactPage() {
       </header>
       <RichText document={page.body?.json} />
       <ContactForm email={settings?.email ?? null} />
-      <section className="rounded-2xl bg-card p-6">
+      <section className="mx-auto max-w-2xl rounded-2xl bg-card p-6">
         <h2 className="text-lg font-semibold text-center">Contact details</h2>
         <div className="mt-4 flex flex-row justify-evenly gap-2 text-sm text-muted-foreground">
           {settings?.email ? (

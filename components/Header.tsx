@@ -2,6 +2,7 @@ import Link from 'next/link';
 import { LuTerminal } from 'react-icons/lu';
 import { getNavigationItems, getSiteSettings } from '@/lib/contentful/api';
 import { NavMenu } from '@/components/NavMenu';
+import { ModeToggle } from './ThemeToggle';
 
 export async function Header() {
   const [items, settings] = await Promise.all([
@@ -22,7 +23,10 @@ export async function Header() {
             {siteName}
           </Link>
         </div>
-        <NavMenu items={items} />
+        <div className="flex gap-1">
+          <NavMenu items={items} />
+          <ModeToggle />
+        </div>
       </div>
     </header>
   );

@@ -60,7 +60,9 @@ export default async function Home() {
             {page.heroTitle ?? page.title}
           </h1>
           {page?.heroText ? (
-            <p className="text-lg text-muted-foreground">{page.heroText}</p>
+            <p className="text-lg text-muted-foreground whitespace-pre-line">
+              {page.heroText}
+            </p>
           ) : null}
           <div className="flex flex-wrap gap-4">
             <Button size="lg" asChild>
@@ -78,7 +80,7 @@ export default async function Home() {
             <h2 className="text-2xl font-semibold tracking-tight">
               Featured Projects
             </h2>
-            <Button variant="ghost" asChild>
+            <Button size="lg" variant="ghost" asChild>
               <Link href="/projects">View all</Link>
             </Button>
           </div>
