@@ -81,45 +81,8 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
           </section>
         ) : null}
       </header>
-      {project.projectUrl || project.githubUrl ? (
-        <div className="flex flex-wrap justify-center gap-6">
-          {project.projectUrl ? (
-            <Link
-              href={project.projectUrl}
-              target="_blank"
-              rel="noreferrer"
-              className="inline-flex items-center gap-2 text-lg font-medium text-foreground underline decoration-foreground/40 underline-offset-4"
-            >
-              <LuExternalLink size={20} />
-              Visit project
-            </Link>
-          ) : null}
-          {project.githubUrl ? (
-            <Link
-              href={project.githubUrl}
-              target="_blank"
-              rel="noreferrer"
-              className="inline-flex items-center gap-2 text-lg font-medium text-foreground underline decoration-foreground/40 underline-offset-4"
-            >
-              <LuGithub size={20} />
-              GitHub
-            </Link>
-          ) : null}
-          {project.youtubeUrl ? (
-            <Link
-              href={project.youtubeUrl}
-              target="_blank"
-              rel="noreferrer"
-              className="inline-flex items-center gap-2 text-lg font-medium text-foreground underline decoration-foreground/40 underline-offset-4"
-            >
-              <LuYoutube size={20} />
-              YouTube
-            </Link>
-          ) : null}
-        </div>
-      ) : null}
       {project.excerpt ? (
-        <p className="text-lg text-muted-foreground">{project.excerpt}</p>
+        <p className="text-muted-foreground">{project.excerpt}</p>
       ) : null}
       {imageUrl && project.coverImage?.width && project.coverImage?.height ? (
         <Image
@@ -131,6 +94,43 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
         />
       ) : null}
       <RichText document={project.description?.json} />
+      {project.projectUrl || project.githubUrl ? (
+        <div className="flex flex-wrap justify-center gap-6">
+          {project.projectUrl ? (
+            <Link
+              href={project.projectUrl}
+              target="_blank"
+              rel="noreferrer"
+              className="inline-flex items-center gap-2 text-lg font-medium text-foreground hover:underline decoration-foreground/40 underline-offset-4"
+            >
+              <LuExternalLink size={20} />
+              Visit project
+            </Link>
+          ) : null}
+          {project.githubUrl ? (
+            <Link
+              href={project.githubUrl}
+              target="_blank"
+              rel="noreferrer"
+              className="inline-flex items-center gap-2 text-lg font-medium text-foreground hover:underline decoration-foreground/40 underline-offset-4"
+            >
+              <LuGithub size={20} />
+              GitHub
+            </Link>
+          ) : null}
+          {project.youtubeUrl ? (
+            <Link
+              href={project.youtubeUrl}
+              target="_blank"
+              rel="noreferrer"
+              className="inline-flex items-center gap-2 text-lg font-medium text-foreground hover:underline decoration-foreground/40 underline-offset-4"
+            >
+              <LuYoutube size={20} />
+              YouTube
+            </Link>
+          ) : null}
+        </div>
+      ) : null}
     </article>
   );
 }

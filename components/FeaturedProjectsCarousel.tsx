@@ -23,7 +23,12 @@ export function FeaturedProjectsCarousel({
   projects
 }: FeaturedProjectsCarouselProps) {
   const autoplay = React.useMemo(
-    () => Autoplay({ delay: 6000, stopOnInteraction: false }),
+    () =>
+      Autoplay({
+        delay: 6000,
+        stopOnInteraction: false,
+        stopOnMouseEnter: true
+      }),
     []
   );
 
@@ -70,9 +75,7 @@ export function FeaturedProjectsCarousel({
                   </div>
                 ) : null}
                 {project.excerpt ? (
-                  <p className="mt-2 text-sm text-muted-foreground">
-                    {project.excerpt}
-                  </p>
+                  <p className="mt-2 text-sm">{project.excerpt}</p>
                 ) : null}
               </Link>
             </CarouselItem>
