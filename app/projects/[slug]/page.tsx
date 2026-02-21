@@ -81,9 +81,7 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
           </section>
         ) : null}
       </header>
-      {project.excerpt ? (
-        <p className="text-muted-foreground">{project.excerpt}</p>
-      ) : null}
+      {project.excerpt ? <p>{project.excerpt}</p> : null}
       {imageUrl && project.coverImage?.width && project.coverImage?.height ? (
         <Image
           src={imageUrl}
