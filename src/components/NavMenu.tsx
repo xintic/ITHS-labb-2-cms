@@ -9,7 +9,7 @@ import {
   NavigationMenuLink,
   NavigationMenuList,
   navigationMenuTriggerStyle
-} from '@/components/ui/navigation-menu';
+} from '@/src/components/ui/navigation-menu';
 import {
   Sheet,
   SheetContent,
@@ -17,10 +17,10 @@ import {
   SheetTitle,
   SheetTrigger,
   SheetClose
-} from '@/components/ui/sheet';
-import { cn } from '@/lib/utils';
-import type { NavigationItem } from '@/lib/contentful/types';
-import { useIsMobile } from '@/hooks/use-mobile';
+} from '@/src/components/ui/sheet';
+import { cn } from '@/src/lib/utils';
+import type { NavigationItem } from '@/src/lib/contentful/types';
+import { useIsMobile } from '@/src/hooks/use-mobile';
 
 function resolveSlug(slug: string) {
   return slug === 'home' ? '/' : `/${slug}`;

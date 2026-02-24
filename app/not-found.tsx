@@ -1,4 +1,4 @@
-import { NotFoundContent } from '@/components/NotFoundContent';
+import { NotFoundContent } from '@/src/components/NotFoundContent';
 import type { Metadata } from 'next';
 
 export const metadata: Metadata = {

@@ -11,9 +11,9 @@ import {
   CarouselItem,
   CarouselNext,
   CarouselPrevious
-} from '@/components/ui/carousel';
-import { getContentfulImageUrl } from '@/lib/contentful/image';
-import type { Project } from '@/lib/contentful/types';
+} from '@/src/components/ui/carousel';
+import { getContentfulImageUrl } from '@/src/lib/contentful/image';
+import type { Project } from '@/src/lib/contentful/types';
 
 type FeaturedProjectsCarouselProps = {
   projects: Project[];

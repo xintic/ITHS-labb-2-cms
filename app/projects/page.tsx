@@ -1,7 +1,7 @@
 import type { Metadata } from 'next';
-import { ProjectsFilter } from '@/components/ProjectsFilter';
-import { RichText } from '@/components/RichText';
-import { getPageBySlug, getProjectList } from '@/lib/contentful/api';
+import { ProjectsFilter } from '@/src/components/ProjectsFilter';
+import { RichText } from '@/src/components/RichText';
+import { getPageBySlug, getProjectList } from '@/src/lib/contentful/api';
 
 export const revalidate = false;
 

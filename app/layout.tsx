@@ -1,8 +1,8 @@
 import { Space_Grotesk } from 'next/font/google';
 import './globals.css';
-import { ThemeProvider } from '@/components/ThemeProvider';
-import { Footer } from '@/components/Footer';
-import { Header } from '@/components/Header';
+import { ThemeProvider } from '@/src/components/ThemeProvider';
+import { Footer } from '@/src/components/Footer';
+import { Header } from '@/src/components/Header';
 
 const spaceGrotesk = Space_Grotesk({
   variable: '--font-space-grotesk',

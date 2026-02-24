@@ -1,8 +1,8 @@
 import Link from 'next/link';
 import { LuTerminal } from 'react-icons/lu';
-import { getNavigationItems, getSiteSettings } from '@/lib/contentful/api';
-import { NavMenu } from '@/components/NavMenu';
-import { ModeToggle } from './ThemeToggle';
+import { getNavigationItems, getSiteSettings } from '@/src/lib/contentful/api';
+import { NavMenu } from '@/src/components/NavMenu';
+import { ModeToggle } from '@/src/components/ThemeToggle';
 
 export async function Header() {
   const [items, settings] = await Promise.all([

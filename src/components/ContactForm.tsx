@@ -2,10 +2,10 @@
 
 import * as React from 'react';
 
-import { Button } from '@/components/ui/button';
-import { Input } from '@/components/ui/input';
-import { Label } from '@/components/ui/label';
-import { Textarea } from '@/components/ui/textarea';
+import { Button } from '@/src/components/ui/button';
+import { Input } from '@/src/components/ui/input';
+import { Label } from '@/src/components/ui/label';
+import { Textarea } from '@/src/components/ui/textarea';
 
 type ContactFormProps = {
   email?: string | null;
@@ -90,9 +90,7 @@ export function ContactForm({ email }: ContactFormProps) {
       </div>
       <div className="space-y-2 text-sm text-muted-foreground">
         {message ? <p>{message}</p> : null}
-        {!message && !email ? (
-          <p>Email is not configured yet.</p>
-        ) : null}
+        {!message && !email ? <p>Email is not configured yet.</p> : null}
         <Button
           type="submit"
           disabled={!email || status === 'loading'}

@@ -2,9 +2,9 @@ import Image from 'next/image';
 import Link from 'next/link';
 import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
-import { RichText } from '@/components/RichText';
-import { getProjectBySlug, getProjectSlugs } from '@/lib/contentful/api';
-import { getContentfulImageUrl } from '@/lib/contentful/image';
+import { RichText } from '@/src/components/RichText';
+import { getProjectBySlug, getProjectSlugs } from '@/src/lib/contentful/api';
+import { getContentfulImageUrl } from '@/src/lib/contentful/image';
 import { LuExternalLink, LuGithub, LuYoutube } from 'react-icons/lu';
 
 export const revalidate = false;

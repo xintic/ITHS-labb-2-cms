@@ -4,8 +4,8 @@ import * as React from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 
-import { getContentfulImageUrl } from '@/lib/contentful/image';
-import type { Project } from '@/lib/contentful/types';
+import { getContentfulImageUrl } from '@/src/lib/contentful/image';
+import type { Project } from '@/src/lib/contentful/types';
 
 type ProjectsFilterProps = {
   projects: Project[];

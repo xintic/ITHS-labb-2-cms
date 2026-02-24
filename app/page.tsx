@@ -2,15 +2,15 @@ import Image from 'next/image';
 import Link from 'next/link';
 import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
-import { RichText } from '@/components/RichText';
-import { Button } from '@/components/ui/button';
-import { FeaturedProjectsCarousel } from '@/components/FeaturedProjectsCarousel';
+import { RichText } from '@/src/components/RichText';
+import { Button } from '@/src/components/ui/button';
+import { FeaturedProjectsCarousel } from '@/src/components/FeaturedProjectsCarousel';
 import {
   getPageBySlug,
   getProjectList,
   getSiteSettings
-} from '@/lib/contentful/api';
-import { getContentfulImageUrl } from '@/lib/contentful/image';
+} from '@/src/lib/contentful/api';
+import { getContentfulImageUrl } from '@/src/lib/contentful/image';
 
 export const revalidate = false;
 

@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import { getSiteSettings } from '@/lib/contentful/api';
+import { getSiteSettings } from '@/src/lib/contentful/api';
 import { LuGithub, LuLinkedin, LuMail } from 'react-icons/lu';
 
 export async function Footer() {

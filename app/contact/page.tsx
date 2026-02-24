@@ -2,10 +2,10 @@ import Image from 'next/image';
 import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import Link from 'next/link';
-import { RichText } from '@/components/RichText';
-import { ContactForm } from '@/components/ContactForm';
-import { getPageBySlug, getSiteSettings } from '@/lib/contentful/api';
-import { getContentfulImageUrl } from '@/lib/contentful/image';
+import { RichText } from '@/src/components/RichText';
+import { ContactForm } from '@/src/components/ContactForm';
+import { getPageBySlug, getSiteSettings } from '@/src/lib/contentful/api';
+import { getContentfulImageUrl } from '@/src/lib/contentful/image';
 import { LuGithub, LuLinkedin, LuMail } from 'react-icons/lu';
 
 export const revalidate = false;

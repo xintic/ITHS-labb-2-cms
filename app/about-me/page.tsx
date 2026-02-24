@@ -1,13 +1,13 @@
 import Image from 'next/image';
 import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
-import { RichText } from '@/components/RichText';
+import { RichText } from '@/src/components/RichText';
 import {
   getExperienceList,
   getPageBySlug,
   getTechList
-} from '@/lib/contentful/api';
-import { getContentfulImageUrl } from '@/lib/contentful/image';
+} from '@/src/lib/contentful/api';
+import { getContentfulImageUrl } from '@/src/lib/contentful/image';
 import { LuDownload } from 'react-icons/lu';
 
 export const revalidate = false;
