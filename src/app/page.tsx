@@ -74,7 +74,7 @@ export default async function Home() {
         </div>
       </header>
       <section className="space-y-6">
-        <h2 className="text-2xl font-semibold tracking-tight">Projects</h2>
+        <h2 className="text-4xl font-semibold">Projects</h2>
         <ProjectsFilter projects={projects} />
       </section>
       <RichText document={page.body?.json} />
