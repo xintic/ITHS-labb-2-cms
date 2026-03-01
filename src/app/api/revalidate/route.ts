@@ -14,7 +14,6 @@ export async function POST(req: NextRequest) {
   const topic = req.headers.get('x-contentful-topic') ?? 'unknown';
 
   revalidatePath('/');
-  revalidatePath('/projects');
   revalidatePath('/about-me');
   revalidatePath('/contact');
 
@@ -31,7 +30,7 @@ export async function POST(req: NextRequest) {
   if (typeof slug === 'string' && slug.length > 0) {
     if (contentType === 'project') {
       revalidateTag(`project:${slug}`);
-      revalidatePath(`/projects/${slug}`);
+      revalidatePath(`/${slug}`);
     }
 
     if (contentType === 'page') {

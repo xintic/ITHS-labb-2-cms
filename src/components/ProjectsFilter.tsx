@@ -92,7 +92,7 @@ export function ProjectsFilter({ projects }: ProjectsFilterProps) {
           return (
             <Link
               key={project.sys.id}
-              href={`/projects/${project.slug}`}
+              href={`/${project.slug}`}
               className="group rounded-2xl border border-border bg-card p-4 transition hover:-translate-y-1"
             >
               {imageUrl &&

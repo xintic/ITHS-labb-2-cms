@@ -4,7 +4,7 @@ import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import { RichText } from '@/src/components/RichText';
 import { Button } from '@/src/components/ui/button';
-import { FeaturedProjectsCarousel } from '@/src/components/FeaturedProjectsCarousel';
+import { ProjectsFilter } from '@/src/components/ProjectsFilter';
 import {
   getPageBySlug,
   getProjectList,
@@ -38,7 +38,6 @@ export default async function Home() {
   }
 
   const profileImageUrl = getContentfulImageUrl(settings?.profileImage ?? null);
-  const featuredProjects = projects.filter((project) => project.featured);
 
   return (
     <div className="space-y-12">
@@ -74,19 +73,10 @@ export default async function Home() {
           </div>
         </div>
       </header>
-      {featuredProjects.length ? (
-        <section className="space-y-6">
-          <div className="flex items-center justify-between gap-4">
-            <h2 className="text-2xl font-semibold tracking-tight">
-              Featured Projects
-            </h2>
-            <Button size="lg" variant="ghost" asChild>
-              <Link href="/projects">View all</Link>
-            </Button>
-          </div>
-          <FeaturedProjectsCarousel projects={featuredProjects} />
-        </section>
-      ) : null}
+      <section className="space-y-6">
+        <h2 className="text-2xl font-semibold tracking-tight">Projects</h2>
+        <ProjectsFilter projects={projects} />
+      </section>
       <RichText document={page.body?.json} />
     </div>
   );

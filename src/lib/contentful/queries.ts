@@ -75,7 +75,6 @@ export const PROJECT_LIST_QUERY = `
         title
         slug
         excerpt
-        featured
         order
         coverImage {
           url
@@ -108,7 +107,6 @@ export const PROJECT_BY_SLUG_QUERY = `
         projectUrl
         githubUrl
         youtubeUrl
-        featured
         coverImage {
           url
           width
